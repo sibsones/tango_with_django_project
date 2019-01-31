@@ -19,8 +19,8 @@ specify a max_length parameter.
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=128, unique=True) # Unique means name can be used as a primary key
-    
+    name_max_length = 128
+    name = models.CharField(max_length=name_max_length, unique=True) # Unique means name can be used as a primary key
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
 
