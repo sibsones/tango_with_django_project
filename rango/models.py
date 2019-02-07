@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 
 """ Some Field Types:
 • CharField, a field for storing character data (e.g. strings). Specify max_length to provide a
@@ -44,3 +45,12 @@ class Page(models.Model):
 
     def __str__(self):
         return self.title
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_images',blank=True)
+
+    def __str__(self):
+        return self.user.username
+
